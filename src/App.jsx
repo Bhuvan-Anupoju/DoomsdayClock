@@ -2,42 +2,44 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function App() {
+  // Target: 18 December 2026, 12:00 AM (local time)
   const targetDate = new Date("2026-12-18T00:00:00");
 
-  const calculate = () => {
+  const calculateTimeLeft = () => {
     const now = new Date();
     const diff = targetDate - now;
 
     if (diff <= 0) return null;
 
     return {
-      months: Math.floor(diff / (1000 * 60 * 60 * 24 * 30)),
-      days: Math.floor((diff / (1000 * 60 * 60 * 24)) % 30),
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
       hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
       minutes: Math.floor((diff / (1000 * 60)) % 60),
       seconds: Math.floor((diff / 1000) % 60),
     };
   };
 
-  const [time, setTime] = useState(calculate());
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(calculate());
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
-  if (!time) return <h1>Time Over</h1>;
+  if (!timeLeft) {
+    return <h1 style={{ textAlign: "center" }}>⏰ Time Over</h1>;
+  }
 
   return (
     <div className="container">
       <div className="timer">
-        {Object.entries(time).map(([key, value]) => (
-          <div className="box" key={key}>
+        {Object.entries(timeLeft).map(([label, value]) => (
+          <div className="box" key={label}>
             <h1>{String(value).padStart(2, "0")}</h1>
-            <p>{key.toUpperCase()}</p>
+            <p>{label.toUpperCase()}</p>
           </div>
         ))}
       </div>

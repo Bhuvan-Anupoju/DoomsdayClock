@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function App() {
-  const targetDate = new Date("2026-12-18T00:00:00");
+  const targetDate = new Date("2026-18-12T00:00:00");
 
   const calculate = () => {
     const now = new Date();

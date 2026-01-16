@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function App() {
-  // Target: 18 December 2026, 12:00 AM (local time)
+  // Target date: 18 December 2026, midnight
   const targetDate = new Date("2026-12-18T00:00:00");
 
   const calculateTimeLeft = () => {
-    const now = new Date();
-    const diff = targetDate - now;
+    const now = new Date(); // uses system date
+    const diff = targetDate.getTime() - now.getTime();
+
+    // 🔍 DEBUG: shows what JS thinks "today" is
+    console.log("NOW:", now.toString());
 
     if (diff <= 0) return null;
 
@@ -35,6 +38,10 @@ export default function App() {
 
   return (
     <div className="container">
+      <h2 style={{ textAlign: "center" }}>
+        Countdown to 18 December 2026
+      </h2>
+
       <div className="timer">
         {Object.entries(timeLeft).map(([label, value]) => (
           <div className="box" key={label}>

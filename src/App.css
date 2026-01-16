@@ -60,7 +60,7 @@
 /* MOBILE BACKGROUND IMAGE ONLY */
 @media (max-width: 600px) {
   .container {
-    height:80vh,
+    
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
       url("./assets/mobile-bg.jpg");
     background-size: cover;

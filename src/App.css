@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron", sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("./assets/bg.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* TIMER */
+.timer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* ALWAYS horizontal */
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(10px, 3vw, 30px);
+  padding: clamp(14px, 4vw, 30px) clamp(18px, 6vw, 50px);
+
+  max-width: 100%;
+  overflow: hidden;
+
+  background: transparent;
+  border-radius: 14px;
+}
+
+/* BOX */
+.box {
+  text-align: center;
+  color: #e8fff7;
+  min-width: clamp(52px, 12vw, 85px);
+}
+
+/* NUMBER TEXT — AUTO SCALE */
+.box h1 {
+  font-size: clamp(22px, 7.5vw, 48px); /* 🔥 auto responsive */
+  letter-spacing: clamp(1px, 0.5vw, 3px);
+  text-shadow: 0 0 12px #00ffcc;
+  line-height: 1;
+}
+
+/* LABEL TEXT — AUTO SCALE */
+.box p {
+  font-size: clamp(9px, 2.5vw, 12px);
+  margin-top: 6px;
+  color: #7fffd4;
+  letter-spacing: clamp(0.5px, 0.4vw, 2px);
+}
+/* MOBILE BACKGROUND IMAGE ONLY */
+@media (max-width: 600px) {
+  .container {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("./assets/mobile-bg.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+}
